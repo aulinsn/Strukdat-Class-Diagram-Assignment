@@ -1,92 +1,124 @@
 import java.util.ArrayList;
 import java.util.List;
 
-abstract class Vehicle {
-    protected String plateNumber;
+// abstraction
+abstract class Kendaraan {
+    protected String nomorKendaraan;
 
-    public Vehicle(String plateNumber) {
-        this.plateNumber = plateNumber;
+    public Kendaraan(String nomorKendaraan) {
+        this.nomorKendaraan = nomorKendaraan;
     }
 
-    public String getPlate() {
-        return plateNumber;
+    public String getNomorKendaraan() {
+        return nomorKendaraan;
     }
 
-    public abstract String getType();
+    // setiap kendaraan harus punya jenis (mobil/motor)
+    public abstract String getTipeKendaraan();
 }
 
-class Car extends Vehicle {
-    public Car(String plateNumber) {
-        super(plateNumber);
+// inheritance
+class Mobil extends Kendaraan {
+    public Mobil(String nomorKendaraan) {
+        super(nomorKendaraan);
     }
 
-    public String getType() {
-        return "Car";
-    }
-}
-
-class Motorcycle extends Vehicle {
-    public Motorcycle(String plateNumber) {
-        super(plateNumber);
-    }
-
-    public String getType() {
-        return "Motorcycle";
+    public String getTipeKendaraan() {
+        return "Mobil";
     }
 }
 
-class Ticket {
-    private int ticketId;
-    private int duration;
-
-    public Ticket(int ticketId, int duration) {
-        this.ticketId = ticketId;
-        this.duration = duration;
+class Motor extends Kendaraan {
+    public Motor(String nomorKendaraan) {
+        super(nomorKendaraan);
     }
 
-    public int getTicketId() {
-        return ticketId;
+    public String getTipeKendaraan() {
+        return "Motor";
+    }
+}
+
+class Tiket {
+    private int idTiket;
+    private int durasi;
+    private int jamMasuk;
+
+    public Tiket(int idTiket, int durasi, int jamMasuk) {
+        this.idTiket = idTiket;
+        this.durasi = durasi;
+        this.jamMasuk = jamMasuk;
     }
 
-    public double calculateFee(String vehicleType) {
-        if (vehicleType.equals("Car")) {
-            return duration * 5000;
+    public int getIdTiket() {
+        return idTiket;
+    }
+
+    // biaya parkir berdasarkan jenis kendaraan
+    public double hitungBiaya(String tipeKendaraan) {
+        if ("Mobil".equals(tipeKendaraan)) {
+            return durasi * 5000;
         } else {
-            return duration * 2000;
+            return durasi * 2000;
         }
     }
+
+    public int getJamMasuk() {
+        return jamMasuk;
+    }
 }
 
-class ParkingLot {
-    private List<Vehicle> vehicles = new ArrayList<>();
+// sistem parkir
+class TempatParkir {
+    // menyimpan kendaraan yang sedang parkir
+    private List<Kendaraan> daftarKendaraan = new ArrayList<>();
 
-    public void addVehicle(Vehicle v) {
-        vehicles.add(v);
-        System.out.println(v.getType() + " masuk: " + v.getPlate());
+    public void tambahKendaraan(Kendaraan k) {
+        daftarKendaraan.add(k);
+        System.out.println(k.getTipeKendaraan() + " masuk: " + k.getNomorKendaraan());
     }
 
-    public int getTotalVehicles() {
-        return vehicles.size();
+    public int getTotalKendaraan() {
+        return daftarKendaraan.size();
+    }
+
+    // menampilkan semua kendaraan
+    public void tampilkanSemuaKendaraan() {
+        System.out.println("\nDaftar kendaraan di parkiran:");
+        for (Kendaraan k : daftarKendaraan) {
+            System.out.println("- " + k.getTipeKendaraan() + " | " + k.getNomorKendaraan());
+        }
     }
 }
 
 public class Main {
     public static void main(String[] args) {
-        ParkingLot parking = new ParkingLot();
+        TempatParkir parkir = new TempatParkir();
 
-        Vehicle car = new Car("B 1234 ABC");
-        Vehicle motor = new Motorcycle("AE 5678 XYZ");
+        Kendaraan mobil1 = new Mobil("B 1234 ABC");
+        Kendaraan motor1 = new Motor("AE 5678 XYZ");
 
-        parking.addVehicle(car);
-        parking.addVehicle(motor);
+        parkir.tambahKendaraan(mobil1);
+        parkir.tambahKendaraan(motor1);
 
-        Ticket ticket1 = new Ticket(1, 2);
-        Ticket ticket2 = new Ticket(2, 3);
+        Tiket tiket1 = new Tiket(1, 2, 10);
+        Tiket tiket2 = new Tiket(2, 3, 11);
 
-        System.out.println("Ticket ID: " + ticket1.getTicketId());
-        System.out.println("Biaya mobil: " + ticket1.calculateFee(car.getType()));
-        System.out.println("Biaya motor: " + ticket2.calculateFee(motor.getType()));
+        System.out.println("\n=== STRUK PARKIR ===");
+        System.out.println("Ticket ID: " + tiket1.getIdTiket());
+        System.out.println("Jenis: " + mobil1.getTipeKendaraan());
+        System.out.println("Plat: " + mobil1.getNomorKendaraan());
+        System.out.println("Jam masuk: " + tiket1.getJamMasuk());
+        System.out.println("Biaya: " + tiket1.hitungBiaya(mobil1.getTipeKendaraan()));
 
-        System.out.println("Total kendaraan: " + parking.getTotalVehicles());
+        System.out.println("\n=== STRUK PARKIR ===");
+        System.out.println("Ticket ID: " + tiket2.getIdTiket());
+        System.out.println("Jenis: " + motor1.getTipeKendaraan());
+        System.out.println("Plat: " + motor1.getNomorKendaraan());
+        System.out.println("Jam masuk: " + tiket2.getJamMasuk());
+        System.out.println("Biaya: " + tiket2.hitungBiaya(motor1.getTipeKendaraan()));
+
+        parkir.tampilkanSemuaKendaraan();
+
+        System.out.println("\nTotal kendaraan: " + parkir.getTotalKendaraan());
     }
 }

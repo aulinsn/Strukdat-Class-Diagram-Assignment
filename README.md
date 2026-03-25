@@ -173,3 +173,11 @@ Inheritance terlihat pada class `Car` dan `Motorcycle` yang mewarisi class `Vehi
 
 ### 4. Polymorphism
 Polymorphism diterapkan melalui method `getType()` yang dioverride di masing-masing subclass. Meskipun dipanggil dari tipe `Vehicle`, hasilnya berbeda tergantung objeknya (Car atau Motorcycle).
+
+## 7. Keunikan Project
+
+Keunikan dari project ini terletak pada penerapan konsep polymorphism dalam sistem parkir, khususnya pada perbedaan perilaku antara jenis kendaraan. Method `getType()` diimplementasikan secara berbeda pada class `Car` dan `Motorcycle`, sehingga sistem dapat secara otomatis mengenali jenis kendaraan tanpa perlu pengecekan manual.
+
+Selain itu, sistem ini juga mengimplementasikan perhitungan biaya parkir yang berbeda berdasarkan jenis kendaraan. Hal ini membuat sistem lebih realistis karena tarif mobil dan motor tidak disamakan.
+
+Penggunaan abstract class `Vehicle` juga menjadi keunikan, karena memungkinkan pengembangan sistem di masa depan, seperti penambahan jenis kendaraan baru tanpa mengubah struktur utama program.

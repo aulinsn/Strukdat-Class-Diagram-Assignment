@@ -1,3 +1,6 @@
+Nama    : Arjunina Maqbulin Usman  
+NRP    : 5027251007
+
 # Parking Management System (OOP Project)
 
 ## 1. Deskripsi Kasus

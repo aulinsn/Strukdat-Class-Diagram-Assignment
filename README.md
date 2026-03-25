@@ -198,21 +198,21 @@ public class Main {
 ## 6. Prinsip OOP yang Diterapkan
 
 ### 1. Encapsulation
-Encapsulation diterapkan dengan menyembunyikan data dalam class menggunakan modifier `private` dan `protected`. Contohnya, atribut `plateNumber` pada class `Vehicle` tidak dapat diakses langsung dari luar class, melainkan melalui method `getPlate()`.
+Encapsulation diterapkan dengan menyembunyikan data menggunakan modifier `private` dan `protected`. Contohnya pada atribut `nomorKendaraan` di class `Kendaraan` serta `idTiket`, `durasi`, dan `jamMasuk` di class `Tiket`. Data tersebut tidak dapat diakses langsung dari luar class, melainkan melalui getter seperti `getNomorKendaraan()` dan `getIdTiket()`.
 
 ### 2. Abstraction
-Abstraction diterapkan pada class `Vehicle` yang bersifat abstract. Class ini hanya mendefinisikan struktur umum kendaraan tanpa implementasi detail pada method `getType()`, sehingga implementasinya diserahkan kepada subclass.
+Abstraction diterapkan pada class `Kendaraan` yang bersifat abstract. Class ini hanya mendefinisikan struktur umum kendaraan, khususnya method `getTipeKendaraan()` tanpa implementasi. Implementasi detailnya diserahkan kepada class turunan seperti `Mobil` dan `Motor`.
 
 ### 3. Inheritance
-Inheritance terlihat pada class `Car` dan `Motorcycle` yang mewarisi class `Vehicle`. Dengan ini, kedua class tersebut dapat menggunakan atribut dan method dari parent class tanpa harus menulis ulang.
+Inheritance terlihat pada class `Mobil` dan `Motor` yang mewarisi class `Kendaraan`. Dengan demikian, kedua class tersebut dapat menggunakan atribut dan method dari class induk tanpa harus menuliskan ulang.
 
 ### 4. Polymorphism
-Polymorphism diterapkan melalui method `getType()` yang dioverride di masing-masing subclass. Meskipun dipanggil dari tipe `Vehicle`, hasilnya berbeda tergantung objeknya (Car atau Motorcycle).
+Polymorphism diterapkan melalui method `getTipeKendaraan()` yang dioverride pada class `Mobil` dan `Motor`. Meskipun dipanggil dari tipe yang sama yaitu `Kendaraan`, hasil yang diberikan berbeda sesuai dengan jenis objeknya.
 
 ## 7. Keunikan Project
 
-Keunikan dari project ini terletak pada penerapan konsep polymorphism dalam sistem parkir, khususnya pada perbedaan perilaku antara jenis kendaraan. Method `getType()` diimplementasikan secara berbeda pada class `Car` dan `Motorcycle`, sehingga sistem dapat secara otomatis mengenali jenis kendaraan tanpa perlu pengecekan manual.
+Keunikan dari project ini terletak pada penerapan sistem parkir yang sederhana namun tetap realistis. Program tidak hanya mencatat kendaraan yang masuk, tetapi juga menampilkan informasi detail seperti jenis kendaraan, nomor kendaraan, serta waktu masuk melalui atribut `jamMasuk`.
 
-Selain itu, sistem ini juga mengimplementasikan perhitungan biaya parkir yang berbeda berdasarkan jenis kendaraan. Hal ini membuat sistem lebih realistis karena tarif mobil dan motor tidak disamakan.
+Selain itu, terdapat perbedaan perhitungan biaya parkir berdasarkan jenis kendaraan, di mana mobil dan motor memiliki tarif yang berbeda. Hal ini membuat sistem lebih mendekati kondisi nyata di lingkungan parkir.
 
-Penggunaan abstract class `Vehicle` juga menjadi keunikan, karena memungkinkan pengembangan sistem di masa depan, seperti penambahan jenis kendaraan baru tanpa mengubah struktur utama program.
+Project ini juga menggunakan abstraction. Dengan abstraction, sistem dapat dikembangkan lebih lanjut, misalnya dengan menambahkan jenis kendaraan baru atau fitur tambahan lainnya tanpa mengubah struktur utama program.

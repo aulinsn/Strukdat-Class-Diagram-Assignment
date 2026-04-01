@@ -57,7 +57,7 @@ classDiagram
     Kendaraan <|-- Mobil
     Kendaraan <|-- Motor
 
-    TempatParkir --> Kendaraan
+    TempatParkir o-- Kendaraan
     Kendaraan --> Tiket
 ```
 

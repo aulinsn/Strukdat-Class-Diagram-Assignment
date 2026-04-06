@@ -25,7 +25,7 @@ classDiagram
 
     class Kendaraan {
         <<abstract>>
-        -nomorKendaraan: String
+        #nomorKendaraan: String
         +getNomorKendaraan(): String
         +getTipeKendaraan(): String
     }
@@ -39,16 +39,16 @@ classDiagram
     }
 
     class Tiket {
-        -idTiket: int
-        -durasi: int
-        -jamMasuk: int
+        #idTiket: int
+        #durasi: int
+        #jamMasuk: int
         +getIdTiket(): int
         +hitungBiaya(tipeKendaraan: String): double
         +getJamMasuk(): int
     }
 
     class TempatParkir {
-        -daftarKendaraan: List~Kendaraan~
+        #daftarKendaraan: List~Kendaraan~
         +tambahKendaraan(k: Kendaraan): void
         +getTotalKendaraan(): int
         +tampilkanSemuaKendaraan(): void

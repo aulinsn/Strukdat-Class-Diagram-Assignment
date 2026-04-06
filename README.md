@@ -39,9 +39,9 @@ classDiagram
     }
 
     class Tiket {
-        #idTiket: int
-        #durasi: int
-        #jamMasuk: int
+        -idTiket: int
+        -durasi: int
+        -jamMasuk: int
         +getIdTiket(): int
         +hitungBiaya(tipeKendaraan: String): double
         +getJamMasuk(): int
